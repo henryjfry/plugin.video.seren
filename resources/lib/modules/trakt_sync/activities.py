@@ -100,8 +100,12 @@ class TraktSyncDatabase(trakt_sync.TraktSyncDatabase, object):
                 my_lists = trakt_api.json_response('users/me/lists', limit=True, limitOverride=500)
                 if my_lists is None:
                     my_lists = []
-                my_lists.extend([i['list'] for i in trakt_api.json_response('users/likes/lists', limit=True,
-                                                                         limitOverride=500)])
+#                my_lists.extend([i['list'] for i in trakt_api.json_response('users/likes/lists', limit=True,limitOverride=500)])
+                try:
+			my_lists.extend([i['list'] for i in trakt_api.json_response('users/likes/lists', limit=True,limitOverride=350)])
+		except:
+			return True
+
                 for item in my_lists:
                     sync_dates = [lists_db.get_list(item['ids']['trakt'], 'movie', item['user']['ids']['slug']),
                                   lists_db.get_list(item['ids']['trakt'], 'show', item['user']['ids']['slug'])]
