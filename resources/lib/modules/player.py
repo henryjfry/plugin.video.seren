@@ -188,9 +188,10 @@ class serenPlayer(tools.player):
             try:
                 total_length = self.getTotalTime()
             except:
-                import traceback
-                traceback.print_exc()
-                return
+		total_length = self.media_length
+#                import traceback
+#                traceback.print_exc()
+#                return
 
         if offset is not None:
             try:
@@ -353,7 +354,7 @@ class serenPlayer(tools.player):
                 tools.kodi.sleep(1000)
                 continue
 
-            tools.kodi.sleep(1000)
+            tools.kodi.sleep(7000)
 
         else:
             self.traktStopWatching()
@@ -371,7 +372,7 @@ class serenPlayer(tools.player):
                     tools.execute('RunPlugin("plugin://plugin.video.seren/?action=runPlayerDialogs")')
                     break
                 else:
-                    tools.kodi.sleep(1000)
+                    tools.kodi.sleep(5000)
 
         self.traktStopWatching()
 
@@ -474,4 +475,3 @@ class PlayerDialogs(tools.player):
         if tools.kodiGui.getCurrentWindowId() != 12005:
             return False
         return True
-
