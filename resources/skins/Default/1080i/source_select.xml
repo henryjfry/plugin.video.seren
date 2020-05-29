@@ -59,7 +59,7 @@
             <control type="group">
                 <top>420</top>
                 <control type="label">
-                    <top>120</top>
+                    <top>300</top>
                     <width>400</width>
                     <font>font12</font>
                     <textcolor>AAFFFFFF</textcolor>
@@ -68,7 +68,7 @@
                     <label>[COLOR $INFO[Window().Property(settings.color)]]$INFO[Window().Property(item.info.title)] [/COLOR]</label>
                 </control>
                 <control type="label">
-                    <top>220</top>
+                    <top>350</top>
                     <width>400</width>
                     <font>font10</font>
                     <textcolor>AAFFFFFF</textcolor>
@@ -106,13 +106,13 @@
         </control>
 
         <!-- Seren Logo -->
-        <control type="image" id="1001">
-            <top>-900</top>
-            <left>913</left>
-            <width>75</width>
-            <aspectratio>keep</aspectratio>
-            <texture>$INFO[Window().Property(seren.logo)]</texture>
-        </control>
+        <!--control type="image" id="1001"-->
+            <!--top>-900</top-->
+            <!--left>913</left-->
+            <!--width>75</width-->
+            <!--aspectratio>keep</aspectratio-->
+            <!--texture>$INFO[Window().Property(seren.logo)]</texture-->
+        <!--/control-->
 
         <!-- Grouplist Texture -->
         <control type="image">
