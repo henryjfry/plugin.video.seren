@@ -21,7 +21,10 @@ class PlayingNext(BaseWindow):
         self.background_tasks()
 
     def calculate_percent(self):
-        return ((int(self.player.getTotalTime()) - int(self.player.getTime())) / float(self.duration)) * 100
+	try:
+	        return ((int(self.player.getTotalTime()) - int(self.player.getTime())) / float(self.duration)) * 100
+	except:
+		return 100
 
     def background_tasks(self):
         try:
@@ -34,7 +37,10 @@ class PlayingNext(BaseWindow):
                     and self.playing_file == self.player.getPlayingFile():
                 tools.kodi.sleep(500)
                 if progress_bar is not None:
-                    progress_bar.setPercent(self.calculate_percent())
+		    prog_pc = self.calculate_percent()
+                    progress_bar.setPercent(prog_pc)
+		    if prog_pc == 100:
+			break
 
             if self.default_action == '1' and\
                     self.playing_file == self.player.getPlayingFile() and\
@@ -67,7 +73,9 @@ class PlayingNext(BaseWindow):
 
         if control_id == 3001:
             self.actioned = True
-            self.player.seekTime(self.player.getTotalTime())
+#            self.player.seekTime(self.player.getTotalTime())
+	    import xbmc
+	    xbmc.executebuiltin('PlayerControl(BigSkipForward)')
             self.close()
         if control_id == 3002:
             self.actioned = True
@@ -84,4 +92,3 @@ class PlayingNext(BaseWindow):
         if action == 7:
             self.handle_action(action)
             return
-
